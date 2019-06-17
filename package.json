@@ -1,7 +1,7 @@
 {
     "name": "appcenter",
     "productName": "appcenter",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "",
     "main": "src/index.js",
     "scripts": {
@@ -47,21 +47,12 @@
         "win": {
             "publish": [
                 "github"
-            ],
-            "target": [
-                {
-                    "target": "nsis",
-                    "arch": [
-                        "x64"
-                    ]
-                }
             ]
         },
         "publish": {
             "provider": "github",
             "repo": "AStore_App",
             "owner": "AgustoDev",
-            "token": "8959f771fc24b191f88fc8be8c94a0431e71d0ed",
             "vPrefixedTagName": true,
             "releaseType": "Release",
             "private": true
