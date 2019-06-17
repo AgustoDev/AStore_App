@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!--<meta http-equiv="Content-Security-Policy" content="http: 'unsafe-eval'" />-->
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Agusto App Store</title>
-        <style>
-            html,
-            body {
-                height: 100%;
-                overflow: hidden;
-                padding: 0;
-                margin: 0;
-            }
-            div {
-                height: 100%;
-            }
-            button {
-                width: 100%;
-                height: 100%;
-                cursor: pointer;
-                border: none;
-                border-radius: 11em;
-                background: url(icon.svg) 50% 50% no-repeat #fff;
-                background-size: 40% auto;
-                outline: none;
-            }
-            button:hover {
-                transform: scale3d(0.9, 0.9, 0.9);
-            }
-            .animated {
-                transition: all 0.15s;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="app">
-            <button @click.prvent="openList" class="animated" title="Click To See App List"></button>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-        <script>
-            require("./js/app.js");
-        </script>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--<meta http-equiv="Content-Security-Policy" content="http: 'unsafe-eval'" />-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Agusto App Store</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+      }
+      div {
+        height: 100%;
+      }
+      button {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        border: none;
+        border-radius: 11em;
+        background: url(icon.svg) 50% 50% no-repeat #000;
+        background-size: 40% auto;
+        outline: none;
+      }
+      button:hover {
+        transform: scale3d(0.9, 0.9, 0.9);
+      }
+      .animated {
+        transition: all 0.15s;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <button @click.prvent="openList" class="animated" title="Click To See App List"></button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+      require("./js/app.js");
+    </script>
+  </body>
 </html>
