@@ -6,7 +6,7 @@ const BrowserWindow = electron.BrowserWindow;
 var iconpath = path.join(__dirname, "icon.ico");
 const updater = require("./updater");
 
-//require("electron-reload")(__dirname);
+require("electron-reload")(__dirname);
 
 let listWindow = null;
 app.on("ready", () => {
@@ -18,8 +18,8 @@ app.on("ready", () => {
     var mainWindow = new BrowserWindow({
         width: 65,
         height: 65,
-        x: width - 10 - 65,
-        y: height - 50 - 65,
+        x: width - 10 - 75,
+        y: height - 50 - 75,
         frame: false,
         transparent: true,
         icon: "./src/app/icon.svg",
@@ -36,16 +36,15 @@ app.on("ready", () => {
 
     /*--------------------List Window ------------------------*/
     listWindow = new BrowserWindow({
-        width: 500,
+        width: 300,
         height: 300,
-        minWidth: 500,
-        minHeight: 300,
-        x: width - 10 - 500,
-        y: height - 50 - 300,
+        maxHeight: 300,
+        x: width - 5 - 300,
+        y: height - 40 - 300,
         show: false,
         transparent: true,
         frame: false,
-        //resizable: true,
+        resizable: false,
         webPreferences: {
             nodeIntegration: true
         }
@@ -58,6 +57,7 @@ app.on("ready", () => {
     appWindow = new BrowserWindow({
         center: true,
         show: false,
+        x: width - 5,
         minWidth: width - 500,
         minHeight: height - 200,
         width,
@@ -82,6 +82,7 @@ app.on("ready", () => {
         appWindow.loadURL(url);
         appWindow.setSkipTaskbar(true);
         appWindow.show();
+        appWindow.maximize();
     });
 
     ipcMain.on("hideList", () => {

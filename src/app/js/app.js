@@ -1,35 +1,42 @@
 const { ipcRenderer } = require("electron");
+const username = require("username");
+const fullname = require("fullname");
 const mysql = require("mysql");
 var conn = mysql.createPool({
-  host: "10.0.0.223",
-  user: "root",
-  password: "DevUser",
-  database: "appcenter"
+    host: "10.0.0.223",
+    user: "root",
+    password: "DevUser",
+    database: "appcenter"
 });
 
 new Vue({
-  el: "#app",
-  data: {
-    appList: []
-  },
-  mounted() {
-    let this2 = this;
-    conn.query("SELECT * from applist", [], (err, result) => {
-      console.log(err);
-      this2.appList = result;
-    });
-  },
-  methods: {
-    openList() {
-      ipcRenderer.send("openList");
+    el: "#app",
+    data: {
+        appList: [],
+        username: ""
     },
+    mounted() {
+        let this2 = this;
+        conn.query("SELECT * from applist", [], (err, result) => {
+            this2.appList = result;
+        });
 
-    hideList() {
-      ipcRenderer.send("hideList");
+        (async () => {
+            var name = await username();
+            this.username = name.toUpperCase();
+        })();
     },
+    methods: {
+        openList() {
+            ipcRenderer.send("openList");
+        },
 
-    openApp(url) {
-      ipcRenderer.send("openApp", url);
+        hideList() {
+            ipcRenderer.send("hideList");
+        },
+
+        openApp(url) {
+            ipcRenderer.send("openApp", url);
+        }
     }
-  }
 });
