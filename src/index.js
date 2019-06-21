@@ -6,7 +6,7 @@ const BrowserWindow = electron.BrowserWindow;
 var iconpath = path.join(__dirname, "icon.ico");
 const updater = require("./updater");
 
-require("electron-reload")(__dirname);
+//require("electron-reload")(__dirname);
 
 let listWindow = null;
 app.on("ready", () => {
