@@ -1,10 +1,12 @@
+const { app, dialog } = require("electron");
 const electron = require("electron");
 const { ipcMain, Tray } = require("electron");
 const path = require("path");
-const app = electron.app;
+//const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 var iconpath = path.join(__dirname, "icon.ico");
 const updater = require("./updater");
+var AutoLaunch = require("auto-launch");
 
 //require("electron-reload")(__dirname);
 
@@ -14,6 +16,11 @@ app.on("ready", () => {
     let display = electron.screen.getPrimaryDisplay();
     let width = display.bounds.width;
     let height = display.bounds.height;
+
+    let asLauncher = new AutoLaunch({
+        name: "AgustoSystems"
+    });
+    asLauncher.enable();
 
     var mainWindow = new BrowserWindow({
         width: 65,
@@ -32,7 +39,7 @@ app.on("ready", () => {
     mainWindow.setSkipTaskbar(true);
     //mainWindow.openDevTools();
 
-    setTimeout(updater.check, 2000);
+    setTimeout(updater.check, 10000);
 
     /*--------------------List Window ------------------------*/
     listWindow = new BrowserWindow({
