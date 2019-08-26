@@ -1,15 +1,20 @@
 {
     "name": "agustosystems",
     "productName": "Agusto Systems",
-    "version": "0.6.0",
+    "version": "0.6.1",
     "description": "",
     "main": "src/index.js",
     "scripts": {
         "dev": "electron .",
         "lint": "echo \"No linting configured\"",
         "electron-toolkit": "electron ./node_modules/electron-toolkit",
-        "dist": "electron-builder --publish onTagOrDraft",
-        "run-win": "electron-builder -w"
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder",
+        "release": "build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/AgustoDev/AStore_App"
     },
     "keywords": [],
     "author": "Agusto IT Support",
@@ -20,11 +25,11 @@
         "electron-updater": "^4.0.0",
         "fullname": "^4.0.0",
         "mysql": "^2.16.0",
-        "update-electron-app": "^1.4.2",
+        "update-electron-app": "^1.5.0",
         "username": "^5.1.0"
     },
     "devDependencies": {
-        "electron": "^4.0.6",
+        "electron": "^6.0.4",
         "electron-builder": "^20.44.4",
         "electron-packager": "^13.1.1",
         "electron-reload": "^1.4.0",
@@ -34,24 +39,13 @@
         "appId": "com.agustodev.agustosystems",
         "copyright": "Copyright © 2019 Agusto IT Support",
         "productName": "Agusto Systems",
-        "electronVersion": "5.0.3",
-        "asar": true,
-        "directories": {
-            "app": "C:\\Users\\Admin\\Desktop\\APPS\\AStore\\Appcenter",
-            "output": "dist"
-        },
         "win": {
             "publish": [
                 "github"
             ]
         },
-        "publish": {
-            "provider": "github",
-            "repo": "AStore_App",
-            "owner": "AgustoDev",
-            "vPrefixedTagName": true,
-            "releaseType": "Release",
-            "private": false
-        }
+        "publish": [
+            "github"
+        ]
     }
 }
