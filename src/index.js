@@ -2,13 +2,13 @@ const { app, dialog } = require("electron");
 const electron = require("electron");
 const { ipcMain, Tray } = require("electron");
 const path = require("path");
-//const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 var iconpath = path.join(__dirname, "icon.ico");
 const updater = require("./updater");
 var AutoLaunch = require("auto-launch");
+const isDev = require("electron-is-dev");
 
-//require("electron-reload")(__dirname);
+require("electron-reload")(__dirname);
 
 let listWindow = null;
 app.on("ready", () => {
@@ -17,16 +17,21 @@ app.on("ready", () => {
     let width = display.bounds.width;
     let height = display.bounds.height;
 
-    let asLauncher = new AutoLaunch({
-        name: "AgustoSystems"
-    });
-    asLauncher.enable();
+    if (isDev) {
+        //console.log("Running in development");
+    } else {
+        let asLauncher = new AutoLaunch({
+            name: "AgustoSystems"
+        });
+        asLauncher.enable();
+        setTimeout(updater.check, 10000);
+    }
 
     var mainWindow = new BrowserWindow({
-        width: 65,
-        height: 65,
-        x: width - 10 - 75,
-        y: height - 50 - 75,
+        width: 75,
+        height: 75,
+        x: width - 10 - 85,
+        y: height - 50 - 85,
         frame: false,
         transparent: true,
         icon: "./src/app/icon.svg",
@@ -38,8 +43,6 @@ app.on("ready", () => {
     mainWindow.loadURL(__dirname + "/app/main.html");
     mainWindow.setSkipTaskbar(true);
     //mainWindow.openDevTools();
-
-    setTimeout(updater.check, 10000);
 
     /*--------------------List Window ------------------------*/
     listWindow = new BrowserWindow({
@@ -85,8 +88,8 @@ app.on("ready", () => {
         listWindow.show();
     });
 
-    ipcMain.on("openApp", (value, url) => {
-        appWindow.loadURL(url);
+    ipcMain.on("openApp", (value, el) => {
+        appWindow.loadURL(el.url);
         appWindow.setSkipTaskbar(true);
         appWindow.show();
         appWindow.maximize();

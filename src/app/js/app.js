@@ -35,8 +35,8 @@ new Vue({
             ipcRenderer.send("hideList");
         },
 
-        openApp(url) {
-            ipcRenderer.send("openApp", url);
+        openApp(url, icon) {
+            ipcRenderer.send("openApp", { url, icon });
         }
     }
 });

@@ -22,7 +22,7 @@
                 <div @click.prevent="hideList"><i class="fa fa-times"></i></div>
             </header>
             <aside>
-                <span class="tiles" @click.prevent="openApp(items.url)" v-for="(items,i) in appList">
+                <span class="tiles" @click.prevent="openApp(items.url,items.favicon)" v-for="(items,i) in appList">
                     <div id="imageHolder" :style="{'background-image':'url('+items.icon+')'}"></div>
                     <div>{{ items.name }}</div>
                 </span>
