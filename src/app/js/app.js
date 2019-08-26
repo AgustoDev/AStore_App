@@ -17,7 +17,7 @@ new Vue({
     },
     mounted() {
         let this2 = this;
-        conn.query("SELECT * from applist", [], (err, result) => {
+        conn.query("SELECT * from applist WHERE status='true'", [], (err, result) => {
             this2.appList = result;
         });
 
