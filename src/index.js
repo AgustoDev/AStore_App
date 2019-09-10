@@ -89,7 +89,10 @@ app.on("ready", () => {
     });
 
     ipcMain.on("openApp", (value, el) => {
-        appWindow.loadURL(el.url);
+        let theName = el.name;
+        let theUrl;
+        el.url.includes("7010") ? (theUrl = `${el.url}?system_name=${theName}`) : (theUrl = el.url);
+        appWindow.loadURL(theUrl);
         appWindow.setSkipTaskbar(true);
         appWindow.show();
         appWindow.maximize();

@@ -36,7 +36,9 @@ new Vue({
         },
 
         openApp(url, icon) {
-            ipcRenderer.send("openApp", { url, icon });
+            let name = this.username;
+            name !== "" ? (name = name.toLowerCase()) : (name = "");
+            ipcRenderer.send("openApp", { url, icon, name });
         }
     }
 });
