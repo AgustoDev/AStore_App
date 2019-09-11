@@ -16,10 +16,8 @@ new Vue({
         username: ""
     },
     mounted() {
-        let this2 = this;
-        conn.query("SELECT * from applist WHERE status='true'", [], (err, result) => {
-            this2.appList = result;
-        });
+        this.getList();
+        setInterval(() => this.getList(), 120000);
 
         (async () => {
             var name = await username();
@@ -27,6 +25,15 @@ new Vue({
         })();
     },
     methods: {
+        getList() {
+            let this2 = this;
+            conn.query("SELECT * from applist WHERE status='true'", [], (err, result) => {
+                if (err) {
+                    return;
+                }
+                this2.appList = result;
+            });
+        },
         openList() {
             ipcRenderer.send("openList");
         },
