@@ -8,7 +8,7 @@ const updater = require("./updater");
 var AutoLaunch = require("auto-launch");
 const isDev = require("electron-is-dev");
 
-//require("electron-reload")(__dirname);
+// require("electron-reload")(__dirname);
 
 let listWindow = null;
 app.on("ready", () => {

@@ -1,4 +1,5 @@
 const { ipcRenderer } = require("electron");
+const getUserInfo = require("../../helpers/helper");
 const username = require("username");
 const fullname = require("fullname");
 const mysql = require("mysql");
@@ -16,22 +17,30 @@ new Vue({
         username: ""
     },
     mounted() {
-        this.getList();
-        setInterval(() => this.getList(), 120000);
-
-        (async () => {
-            var name = await username();
-            this.username = name.toUpperCase();
-        })();
+        this.init();
+        setInterval(() => this.init(), 120000);
     },
     methods: {
-        getList() {
+        init() {
+            (async () => {
+                var name = await username();
+                this.username = name.toUpperCase();
+                this.validatesUser(name);
+            })();
+        },
+
+        validatesUser(name) {
+            getUserInfo("chijioke").then(res => {
+                var dept = res.unit;
+                this.getList(dept);
+            });
+        },
+        getList(dept) {
             let this2 = this;
             conn.query("SELECT * from applist WHERE status='true'", [], (err, result) => {
-                if (err) {
-                    return;
-                }
-                this2.appList = result;
+                if (err) return;
+
+                dept == "Executive Office" ? (this2.appList = result) : (this2.appList = result.filter(el => el.dept == dept || el.dept == "all"));
             });
         },
         openList() {
