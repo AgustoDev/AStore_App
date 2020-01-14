@@ -12,9 +12,10 @@
             var p = document.getElementById("progress");
             const { ipcRender } = require("electron");
             setInterval(() => {
-                let theProgress = ipcRender.sendSync("download-progress-request");
+                let theProgress = ipcRender.sendSync("downloadProgressRequest");
                 p.value = theProgress;
             }, 1000);
         </script>
     </body>
 </html>
+

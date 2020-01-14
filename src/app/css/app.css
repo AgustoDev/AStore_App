@@ -1,116 +1,155 @@
-@import url("https://fonts.googleapis.com/css?family=Rubik:400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300,400,600&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Merriweather:400,900&display=swap");
+@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 * {
-    transition: all 0.15s;
-    font-family: "Rubik", sans-serif;
+	transition: all 0.15s;
+	font-family: "Quicksand", sans-serif;
+	font-weight: 600;
+	font-stretch: condensed;
+	image-rendering: crisp-edges;
 }
 html,
 body {
-    padding: 0;
-    margin: 0;
-
-    height: 100%;
-    width: 100%;
-    user-select: none;
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+	user-select: none;
 }
 body > div#app {
-    background: #2f2f2f;
-    background: #dfdfdf;
-    border-top-right-radius: 10px;
-    height: 100%;
-    border-top-left-radius: 10px;
-
-    display: flex;
-    flex-direction: column;
+	background: #2f2f2f;
+	background: #fff;
+	border-top-right-radius: 10px;
+	height: 100%;
+	border-top-left-radius: 10px;
+	display: flex;
+	flex-direction: column;
 }
 header {
-    display: flex;
-    justify-content: space-between;
-    -webkit-app-region: no-drag;
-    height: 16%;
-    align-items: center;
-    box-sizing: border-box;
-    overflow: hidden;
-}
-header div:first-child {
-    padding-left: 1em;
-    font-size: 80%;
-    font-weight: 400;
+	background: linear-gradient(90deg, #182848 0%, #273a64 100%);
+	display: flex;
+	justify-content: space-between;
+	-webkit-app-region: no-drag;
+	min-height: 50px;
+	align-items: center;
+	box-sizing: border-box;
+	overflow: hidden;
 }
 
-header div:last-child {
-    -webkit-app-region: no-drag;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.3em;
-    height: 100%;
-    color: #2f2f2f;
-    width: 20%;
-    background: rgba(255, 255, 255, 0.349);
-    border-top-right-radius: 10px;
+.userPane {
+	display: flex;
 }
-header div:last-child:hover {
-    transform: scale3d(0.85, 0.85, 0.85);
-    font-size-adjust: none;
+.profilePic {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50px;
+	height: 50px;
+}
+.profilePic .imgHolder {
+	background: #efefef;
+	width: 30px;
+	height: 30px;
+	border-radius: 100px;
+	background-size: cover;
+}
+.userDetails {
+	color: #fff;
+	flex: 1;
+	flex-direction: column;
+	display: flex;
+	justify-content: center;
+	font-size: 0.8em;
+	font-weight: 300;
+}
+.userDetails span {
+	font-weight: 400;
+	font-size: 75%;
+	opacity: 0.8;
+}
+
+#closeBtn {
+	-webkit-app-region: no-drag;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1em;
+	height: 100%;
+	color: #fff;
+	width: 15%;
+}
+#closeBtn:hover {
+	color: #fff;
+	background: #2f2f2f;
+	font-size-adjust: none;
 }
 aside {
-    display: flex;
-    height: 84%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    overflow: auto;
-    padding: 2vw;
+	flex: 1;
+	background: #efefef;
+
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	overflow: auto;
+	padding: 2vw;
+}
+aside content {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
 }
 .tiles {
-    color: #dfdfdf;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-    padding: 0.1vh;
-    box-sizing: border-box;
-    height: 30vw;
-    width: 30vw;
-    border-radius: 20px;
-    flex-direction: column;
-    cursor: pointer;
-    background: rgba(255, 255, 255, 0.822);
-    border: solid thin rgba(44, 28, 28, 0.137);
-    overflow: hidden;
-    margin: 1vw;
-    color: #2f2f2f;
-    margin-top: 1em;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	text-align: center;
+	padding: 10px;
+	box-sizing: border-box;
+	height: 100px;
+	width: 30%;
+	margin: 1em 3% 0 0;
+	border-radius: 5px;
+	cursor: pointer;
+	overflow: hidden;
+	box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.05);
+	-webkit-box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.267);
 }
-.tiles:nth-child(n + 4) {
-    margin-top: -5%;
+span.tiles div {
+	font-size: 3vw;
+	font-weight: 600;
 }
 aside .tiles:hover {
-    /*transform: scale3d(0.95, 0.95, 0.95);*/
-    background: #2f2f2f;
-    color: #fff;
-    font-size-adjust: none;
+	transition: all 0.15s;
+	background: rgba(175, 75, 148, 0.263);
+	background: linear-gradient(90deg, #18284830 0%, #273a6430 100%);
 }
-aside div:first-child {
-    display: flex;
-    width: 100%;
-    height: 60%;
-    background-repeat: no-repeat;
-    background-size: 45% auto;
-    background-position: 50% 100%;
+.iconPic .imgHolder {
+	width: 40px;
+	height: 40px;
+	background-size: auto 100%;
+	margin: 5px 0;
+}
+/*aside div:first-child {
+	display: flex;
+	width: 100%;
+	height: 60%;
+	background-repeat: no-repeat;
+	background-size: 45% auto;
+	background-position: 50% 100%;
 }
 aside .tiles img {
-    height: 10em;
+	background-size: contain;
+	height: 10em;
 }
 aside div:last-child {
-    width: 100%;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 2vh;
-    font-size: 70%;
-    font-weight: 300;
-    font-weight: 500;
-}
+	width: 100%;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	padding-top: 2vh;
+	font-size: 70%;
+}*/
