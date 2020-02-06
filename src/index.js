@@ -78,6 +78,8 @@ app.on("ready", () => {
 		}
 	});
 
+	//appWindow.openDevTools();
+
 	appWindow.on("close", e => {
 		e.preventDefault();
 		appWindow.loadURL(__dirname + "/app/blank.html");
@@ -88,12 +90,8 @@ app.on("ready", () => {
 		listWindow.show();
 	});
 
-	ipcMain.on("openApp", (value, el) => {
-		let theName = el.name;
-
-		let theUrl;
-		theUrl = `${el.url}?system_name=${theName}`;
-		appWindow.loadURL(theUrl);
+	ipcMain.on("openApp", (value, url) => {
+		appWindow.loadURL(url);
 		appWindow.setSkipTaskbar(true);
 		appWindow.show();
 		appWindow.maximize();

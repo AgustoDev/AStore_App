@@ -24,13 +24,18 @@
                 <div @click.prevent="hideList" id="closeBtn"><i class="fa fa-times"></i></div>
             </header>
             <aside>
-            <content>
+
+            <content v-if="Loaded">
                 <span class="tiles" @click.prevent="openApp(items)" v-for="(items,i) in appList">
                 <div class="iconPic">
                     <div class="imgHolder" :style="{backgroundImage:'url('+items.icon+')'}"></div>
                 </div>
                     <div>{{ items.name }}</div>
                 </span>                               
+                </content>
+                
+                <content v-else class="loaderClass">
+                    LOading . . .
                 </content>
             </aside>
         </div>

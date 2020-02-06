@@ -131,6 +131,30 @@ aside .tiles:hover {
 	background-size: auto 100%;
 	margin: 5px 0;
 }
+.loaderClass {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 1em;
+	animation: loading 3s infinite;
+}
+
+@keyframes loading {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
 /*aside div:first-child {
 	display: flex;
 	width: 100%;

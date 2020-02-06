@@ -1,7 +1,7 @@
 {
 	"name": "agustosystems",
 	"productName": "Agusto Systems",
-	"version": "0.7.0",
+	"version": "0.7.2",
 	"description": "Agusto Desktop Application",
 	"main": "src/index.js",
 	"scripts": {
